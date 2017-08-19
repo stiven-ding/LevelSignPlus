@@ -237,9 +237,9 @@ public class SignExtend extends JavaPlugin {
         String level = getPlayerLevel(uuid);
         int level_num = Integer.valueOf(level.replace("level_", "")) + 1;
         String levelTo = new StringBuilder("level_").append(level_num).toString();
-        levelConfig.set(uuid + ".level",levelTo);
+        levelConfig.set(uuid + ".level", levelTo);
         levelConfiguration.saveDataConfig();
-        levelUpExecutor.levelUp(uuid,levelTo);
+        levelUpExecutor.levelUp(uuid, levelTo);
         if (isEnableHealth()) {
             setPlayerMaxHealth(uuid);
         }

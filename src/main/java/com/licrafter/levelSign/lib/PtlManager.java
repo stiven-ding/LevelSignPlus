@@ -5,7 +5,6 @@ package com.licrafter.levelSign.lib;
  */
 
 import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.PacketType.Play.Server;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -48,7 +47,7 @@ public class PtlManager implements Listener {
     public void onEnable() {
 
         // register listener for outgoing tile entity data:
-        protocolManager.addPacketListener(new PacketAdapter(plugin, ListenerPriority.NORMAL, Server.TILE_ENTITY_DATA) {
+        protocolManager.addPacketListener(new PacketAdapter(plugin, ListenerPriority.NORMAL, PacketType.Play.Server.TILE_ENTITY_DATA) {
             @Override
             public void onPacketSending(PacketEvent event) {
                 PacketContainer packet = event.getPacket();
@@ -56,25 +55,25 @@ public class PtlManager implements Listener {
                 if (!ProtocolUtils.Packet.TileEntityData.isUpdateSignPacket(packet)) {
                     return; // ignore
                 }
+
                 Player player = event.getPlayer();
                 BlockPosition blockPosition = ProtocolUtils.Packet.TileEntityData.getBlockPosition(packet);
                 Location location = new Location(player.getWorld(), blockPosition.getX(), blockPosition.getY(), blockPosition.getZ());
                 NbtCompound signData = ProtocolUtils.Packet.TileEntityData.getTileEntityData(packet);
                 String[] rawLines = ProtocolUtils.TileEntity.Sign.getText(signData);
 
-                // call the SignSendEvent:
-                LevelSendEvent signSendEvent = callLevelSendEvent(player, location, rawLines);
+                LevelSendEvent levelSendEvent = callLevelSendEvent(player, location, rawLines);
 
-                if (signSendEvent.isCancelled()) {
+                if (levelSendEvent.isCancelled()) {
                     // don't send tile entity update packet:
                     event.setCancelled(true);
-                } else if (signSendEvent.isModified()) { // only replacing the outgoing packet if it is needed
-                    String[] newLines = signSendEvent.getLines();
+                } else if (levelSendEvent.isModified()) { // only replacing the outgoing packet if it is needed
+                    String[] newLines = levelSendEvent.getLines();
 
                     // prepare new outgoing packet:
                     PacketContainer outgoingPacket = packet.shallowClone();
                     // create new sign data compound:
-                    NbtCompound outgoingSignData = (NbtCompound) NbtFactory.ofCompound(signData.getName());
+                    NbtCompound outgoingSignData = NbtFactory.ofCompound(signData.getName());
                     // copy tile entity data (shallow copy):
                     for (String key : signData.getKeys()) {
                         outgoingSignData.put(key, signData.getValue(key));
@@ -118,14 +117,13 @@ public class PtlManager implements Listener {
                     Location location = new Location(world, x, y, z);
                     String[] rawLines = ProtocolUtils.TileEntity.Sign.getText(tileEntityData);
 
-                    // call the SignSendEvent:
                     LevelSendEvent signSendEvent = callLevelSendEvent(player, location, rawLines);
                     if (signSendEvent.isCancelled() || signSendEvent.isModified()) {
                         // prepare new outgoing packet, if we didn't already create one:
                         if (outgoingPacket == null) {
                             outgoingPacket = packet.shallowClone();
                             // copy tile entities data list (shallow copy):
-                            outgoingTileEntitiesData = new ArrayList<Object>(tileEntitiesData);
+                            outgoingTileEntitiesData = new ArrayList<>(tileEntitiesData);
                             // use the new tile entities data list for the outgoing packet:
                             ProtocolUtils.Packet.MapChunk.setTileEntitiesData(outgoingPacket, outgoingTileEntitiesData);
                         }
@@ -142,13 +140,13 @@ public class PtlManager implements Listener {
                             if (outgoingPacket == null) {
                                 outgoingPacket = packet.shallowClone();
                                 // copy tile entities data list (shallow copy):
-                                outgoingTileEntitiesData = new ArrayList<Object>(tileEntitiesData);
+                                outgoingTileEntitiesData = new ArrayList<>(tileEntitiesData);
                                 // use the new tile entities data list for the outgoing packet:
                                 ProtocolUtils.Packet.MapChunk.setTileEntitiesData(outgoingPacket, outgoingTileEntitiesData);
                             }
 
                             // create new sign data compound:
-                            NbtCompound outgoingSignData = (NbtCompound) NbtFactory.ofCompound(tileEntityData.getName());
+                            NbtCompound outgoingSignData = NbtFactory.ofCompound(tileEntityData.getName());
                             // copy tile entity data:
                             for (String key : tileEntityData.getKeys()) {
                                 outgoingSignData.put(key, tileEntityData.getValue(key));
@@ -208,7 +206,6 @@ public class PtlManager implements Listener {
     }
 
     private LevelSendEvent callLevelSendEvent(Player player, Location location, String[] rawLines) {
-        // call the LevelSendEvent:
         LevelSendEvent levelSendEvent = new LevelSendEvent(player, location, rawLines);
         Bukkit.getPluginManager().callEvent(levelSendEvent);
         return levelSendEvent;
