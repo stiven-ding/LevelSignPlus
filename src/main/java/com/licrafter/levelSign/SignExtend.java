@@ -1,7 +1,7 @@
 package com.licrafter.levelSign;
 
-import com.licrafter.signPlus.lib.Holder;
-import com.licrafter.signPlus.lib.PtlManager;
+import com.licrafter.levelSign.lib.Holder;
+import com.licrafter.levelSign.lib.PtlManager;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

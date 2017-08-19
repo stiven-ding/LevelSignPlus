@@ -1,0 +1,11 @@
+name: LevelSignPlus
+main: com.licrafter.signPlus.SignExtend
+version: 3.1.4
+author: shell
+website: http://licrafter.com
+description: prefix level
+depend: [ProtocolLib,Residence]
+commands:
+  level:
+    description: basic command
+    usage: §c/level help

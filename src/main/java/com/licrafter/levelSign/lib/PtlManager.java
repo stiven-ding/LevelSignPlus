@@ -16,7 +16,7 @@ import com.comphenix.protocol.wrappers.BlockPosition;
 import com.comphenix.protocol.wrappers.nbt.NbtCompound;
 import com.comphenix.protocol.wrappers.nbt.NbtFactory;
 import com.comphenix.protocol.wrappers.nbt.NbtWrapper;
-import com.licrafter.signPlus.SignExtend;
+import com.licrafter.levelSign.SignExtend;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
