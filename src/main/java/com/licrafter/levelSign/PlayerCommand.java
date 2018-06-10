@@ -26,9 +26,9 @@ public class PlayerCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 1 && args[0].equals("reload") && sender.isOp()) {
-            sender.sendMessage(ChatColor.RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf" + ChatColor.AQUA + "reloading config....");
+            sender.sendMessage(ChatColor.RED + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½f" + ChatColor.AQUA + "reloading config....");
             plugin.reload();
-            sender.sendMessage(ChatColor.RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf" + ChatColor.AQUA + "config reloaded!");
+            sender.sendMessage(ChatColor.RED + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½f" + ChatColor.AQUA + "config reloaded!");
             return true;
         }
         if (args.length == 1 && args[0].equals("list")) {
@@ -54,16 +54,16 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length == 3 && args[0].equals("add") && sender.isOp()) {
             Player player = Bukkit.getPlayer(args[1]);
             if (player == null) {
-                sender.sendMessage(ChatColor.RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìfÍæ¼Ò²»´æÔÚ»òÕß²»ÔÚÏß!");
+                sender.sendMessage(ChatColor.RED + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½fï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return true;
             }
             try {
                 plugin.setPlayerPoint(player.getUniqueId(), Integer.parseInt(args[2]));
             } catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf¾­Ñé±ØÐëÎªÒ»¸ö´óÓÚ0µÄÕûÊý!");
+                sender.sendMessage(ChatColor.RED + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return true;
             }
-            sender.sendMessage(ChatColor.AQUA + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìfÎªÍæ¼Ò" + args[1] + "Ôö¼ÓÁË¾­Ñé:" + args[2]);
+            sender.sendMessage(ChatColor.AQUA + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½fÎªï¿½ï¿½ï¿½" + args[1] + "ï¿½ï¿½ï¿½ï¿½ï¿½Ë¾ï¿½ï¿½ï¿½:" + args[2]);
             return true;
         }
 
@@ -80,7 +80,7 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length==1&&sender.isOp()){
             Player player = Bukkit.getPlayer(args[0]);
             if (player==null){
-                sender.sendMessage(ChatColor.RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìfÍæ¼Ò²»´æÔÚ»òÕß²»ÔÚÏß!");
+                sender.sendMessage(ChatColor.RED + "ï¿½ï¿½a Ê±ï¿½ï¿½È¼ï¿½ ï¿½ï¿½bï¿½ï¿½l>> ï¿½ï¿½fï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½!");
                 return true;
             }
             List<String> messages = plugin.getConfig().getStringList("setting.message");
@@ -92,15 +92,15 @@ public class PlayerCommand implements CommandExecutor {
         }
 
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("setting.title")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level list  &7- ²é¿´µÈ¼¶Ë³Ðò"));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level me  &7- ²é¿´×Ô¼ºµÄµÈ¼¶ÐÅÏ¢"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level list  &7- ï¿½é¿´ï¿½È¼ï¿½Ë³ï¿½ï¿½"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level me  &7- ï¿½é¿´ï¿½Ô¼ï¿½ï¿½ÄµÈ¼ï¿½ï¿½ï¿½Ï¢"));
         if (sender.isOp()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level add [player] [µãÊý]  &7- ÎªÍæ¼ÒÔö¼Ó¾­ÑéµãÊý(±ØÐëÎªÕýÕûÊý)"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level add [player] [ï¿½ï¿½ï¿½ï¿½]  &7- Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)"));
         }
         if (sender.isOp()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level [player]  &7- ²é¿´Ä³¸öÍæ¼ÒµÄµÈ¼¶ÐÅÏ¢"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level [player]  &7- ï¿½é¿´Ä³ï¿½ï¿½ï¿½ï¿½ÒµÄµÈ¼ï¿½ï¿½ï¿½Ï¢"));
         }
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level reload  &7-  ÖØÔØÅäÖÃÎÄ¼þ"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level reload  &7-  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½"));
         return true;
     }
 
@@ -114,7 +114,7 @@ public class PlayerCommand implements CommandExecutor {
                  .replaceAll("%resCount%", String.valueOf(plugin.getPlayerMaxResCount(uuid)))
                  .replaceAll("%resSize%", String.valueOf(plugin.getPlayerMaxResSize(uuid)))
                  .replaceAll("%killMob%", String.valueOf(plugin.getKillMob(player.getName())))
-                 .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())))
+                 .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())));
         return msg;
     }
 
