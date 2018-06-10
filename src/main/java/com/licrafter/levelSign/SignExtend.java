@@ -44,16 +44,16 @@ public class SignExtend extends JavaPlugin {
     public boolean hasTagApi;
     public String maxLevel;
     public int maxLevelPoint;
-    // å•ä»·
+    // µ¥¼Û
     public double price;
-    // ç‚¹å‡»ä¸€æ¬¡è´­ä¹°æ•°é‡
+    // µã»÷Ò»´Î¹ºÂòÊıÁ¿
     public int buyCount;
-    // å½“ç©å®¶å‡çº§çš„æ—¶å€™æ˜¯å¦å…¨æœå¹¿æ’­
+    // µ±Íæ¼ÒÉı¼¶µÄÊ±ºòÊÇ·ñÈ«·ş¹ã²¥
     public boolean broadCast;
 
     @Override
     public void onEnable() {
-        getLogger().info("Enabling SignExtend (ç‰ˆæœ¬:" + getDescription().getVersion() + " " + "ä½œè€…:" +
+        getLogger().info("Enabling SignExtend (°æ±¾:" + getDescription().getVersion() + " " + "×÷Õß:" +
                 getDescription().getAuthors().get(0) + " )" + " WebSite:" + getDescription().getWebsite());
         if (setupEconomy()) {
             getLogger().info("Plugin Vault Is Found! " + econ.getName());
@@ -117,7 +117,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&lç­‰çº§:" + "&a&l" + getPlayerLevelNick(player.getUniqueId())));
+                        "&lµÈ¼¶:" + "&a&l" + getPlayerLevelNick(player.getUniqueId())));
             }
 
         };
@@ -125,7 +125,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&lç‚¹æ•°:" + "&a&l" + getPlayerPoint(player.getUniqueId())));
+                        "&lµãÊı:" + "&a&l" + getPlayerPoint(player.getUniqueId())));
             }
         };
 
@@ -133,7 +133,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&lä¸Šé™:" + "&a&l" + getPlayerMaxPoint(player.getUniqueId())));
+                        "&lÉÏÏŞ:" + "&a&l" + getPlayerMaxPoint(player.getUniqueId())));
             }
         };
 
@@ -141,40 +141,40 @@ public class SignExtend extends JavaPlugin {
 
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.one", "æš‚æ— "));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.one", "ÔİÎŞ"));
             }
         };
         new Holder(this, "[TWO]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.two", "æš‚æ— "));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.two", "ÔİÎŞ"));
             }
         };
         new Holder(this, "[THREE]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.three", "æš‚æ— "));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.three", "ÔİÎŞ"));
             }
         };
 
         new Holder(this, "[COUNT1]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.one") + "åª");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.one") + "Ö»");
             }
         };
 
         new Holder(this, "[COUNT2]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.two") + "åª");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.two") + "Ö»");
             }
         };
 
         new Holder(this, "[COUNT3]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.three") + "åª");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.three") + "Ö»");
             }
         };
     }
@@ -184,7 +184,7 @@ public class SignExtend extends JavaPlugin {
         return sb.append("               ").toString();
     }
 
-    // ç»™ç©å®¶æ·»åŠ ç‚¹æ•°
+    // ¸øÍæ¼ÒÌí¼ÓµãÊı
     public int addPlayerPoint(UUID uuid) {
         int newPoint = getPlayerPoint2(uuid) + buyCount;
         if (newPoint > maxLevelPoint) {
@@ -195,7 +195,7 @@ public class SignExtend extends JavaPlugin {
         return canLevelUp(uuid, newPoint);
     }
 
-    // æŒ‡ä»¤ç»™ç©å®¶æ·»åŠ ç‚¹æ•°
+    // Ö¸Áî¸øÍæ¼ÒÌí¼ÓµãÊı
     public void setPlayerPoint(UUID uuid, int point) {
         if (point < 0) {
             return;
@@ -208,7 +208,7 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // åˆ¤æ–­æ˜¯å¦è¾¾åˆ°æœ€å¤§ç‚¹æ•°,ç„¶åå‡çº§
+    // ÅĞ¶ÏÊÇ·ñ´ïµ½×î´óµãÊı,È»ºóÉı¼¶
     public int canLevelUp(UUID uuid, int point) {
         if (point > getPlayerMaxPoint(uuid)) {
             levelUp(uuid);
@@ -237,7 +237,7 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // å‡çº§
+    // Éı¼¶
     public void levelUp(UUID uuid) {
         String level = getPlayerLevel(uuid);
         int level_num = Integer.valueOf(level.replace("level_", "")) + 1;
@@ -254,7 +254,7 @@ public class SignExtend extends JavaPlugin {
         levelConfig.set(uuid.toString().concat(".level"), level);
     }
 
-    // æ ¹æ®uuidå¾—åˆ°è¯¥ç©å®¶çš„point
+    // ¸ù¾İuuidµÃµ½¸ÃÍæ¼ÒµÄpoint
     public String getPlayerPoint(UUID uuid) {
         if (levelConfig.contains(uuid.toString())) {
             return String.valueOf(levelConfig.getInt(uuid.toString() + ".point"));
@@ -267,7 +267,7 @@ public class SignExtend extends JavaPlugin {
         return levelConfig.getInt(uuid.toString() + ".point");
     }
 
-    // å¾—åˆ°ç©å®¶ç­‰çº§å‰ç¼€,å¦‚æœæ²¡æœ‰è¯¥ç©å®¶åˆ™è¿”å›é»˜è®¤ç­‰çº§å‰ç¼€
+    // µÃµ½Íæ¼ÒµÈ¼¶Ç°×º,Èç¹ûÃ»ÓĞ¸ÃÍæ¼ÒÔò·µ»ØÄ¬ÈÏµÈ¼¶Ç°×º
     public String getPlayerLevelNick(UUID uuid) {
         return getLevelNick(getPlayerLevel(uuid));
     }
@@ -276,27 +276,27 @@ public class SignExtend extends JavaPlugin {
         return getConfig().getString("setting.levels." + level + ".nick");
     }
 
-    // å¾—åˆ°ç©å®¶æœ€å¤§è¡€é‡
+    // µÃµ½Íæ¼Ò×î´óÑªÁ¿
     public Double getPlayerMaxHealth(UUID uuid) {
         return getConfig().getDouble("setting.levels." + getPlayerLevel(uuid) + ".health");
     }
 
-    // å¾—åˆ°ç©å®¶æ‰€èƒ½æ‹¥æœ‰çš„æœ€å¤šé¢†åœ°æ•°é‡
+    // µÃµ½Íæ¼ÒËùÄÜÓµÓĞµÄ×î¶àÁìµØÊıÁ¿
     public int getPlayerMaxResCount(UUID uuid) {
         return getConfig().getInt("setting.levels." + getPlayerLevel(uuid) + ".resCount");
     }
 
-    // å¾—åˆ°ç©å®¶æœ€å¤§é¢†åœ°é•¿åº¦
+    // µÃµ½Íæ¼Ò×î´óÁìµØ³¤¶È
     public int getPlayerMaxResSize(UUID uuid) {
         return getConfig().getInt("setting.levels." + getPlayerLevel(uuid) + ".resSize");
     }
 
-    // å¢åŠ æœ€å¤§è¡€é‡ä¸Šé™çš„åŠŸèƒ½æ˜¯å¦å¼€å¯
+    // Ôö¼Ó×î´óÑªÁ¿ÉÏÏŞµÄ¹¦ÄÜÊÇ·ñ¿ªÆô
     public boolean isEnableHealth() {
         return getConfig().getBoolean("setting.enable_health", true);
     }
 
-    // é™åˆ¶é¢†åœ°å¤§å°å’Œæ•°é‡çš„åŠŸèƒ½æ˜¯å¦å¼€å¯
+    // ÏŞÖÆÁìµØ´óĞ¡ºÍÊıÁ¿µÄ¹¦ÄÜÊÇ·ñ¿ªÆô
     public boolean isEnableRes() {
         return getConfig().getBoolean("setting.enable_res", true);
     }
@@ -309,7 +309,7 @@ public class SignExtend extends JavaPlugin {
         player.setHealth(maxHealth);
     }
 
-    // å¾—åˆ°ç©å®¶çš„levelç­‰çº§,å¦‚æœæ²¡æœ‰åˆ™è¿”å›é»˜è®¤ç­‰çº§
+    // µÃµ½Íæ¼ÒµÄlevelµÈ¼¶,Èç¹ûÃ»ÓĞÔò·µ»ØÄ¬ÈÏµÈ¼¶
     public String getPlayerLevel(UUID uuid) {
         if (levelConfig.contains(uuid.toString() + ".level")) {
             return levelConfig.getString(uuid.toString() + ".level");
@@ -318,12 +318,12 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // å¾—åˆ°ç©å®¶éœ€è¦è¾¾åˆ°çš„å‡çº§ä¸Šé™point
+    // µÃµ½Íæ¼ÒĞèÒª´ïµ½µÄÉı¼¶ÉÏÏŞpoint
     public int getPlayerMaxPoint(UUID uuid) {
         return getMaxPoint(getPlayerLevel(uuid));
     }
 
-    // æŸä¸ªç­‰çº§éœ€è¦è¾¾åˆ°çš„æœ€å¤§å‡çº§ä¸Šé™
+    // Ä³¸öµÈ¼¶ĞèÒª´ïµ½µÄ×î´óÉı¼¶ÉÏÏŞ
     public int getMaxPoint(String level) {
         return getConfig().getInt("setting.levels." + level + ".maxPoint");
     }
