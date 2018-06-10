@@ -26,9 +26,9 @@ public class PlayerCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 1 && args[0].equals("reload") && sender.isOp()) {
-            sender.sendMessage(ChatColor.RED + "[LEVEL]" + ChatColor.AQUA + "reloading config....");
+            sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "reloading config....");
             plugin.reload();
-            sender.sendMessage(ChatColor.RED + "[LEVEL]" + ChatColor.AQUA + "config reloaded!");
+            sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "config reloaded!");
             return true;
         }
         if (args.length == 1 && args[0].equals("list")) {
@@ -54,16 +54,16 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length == 3 && args[0].equals("add") && sender.isOp()) {
             Player player = Bukkit.getPlayer(args[1]);
             if (player == null) {
-                sender.sendMessage(ChatColor.RED + "[LEVEL]玩家不存在或者不在线!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f玩家不存在或者不在线!");
                 return true;
             }
             try {
                 plugin.setPlayerPoint(player.getUniqueId(), Integer.parseInt(args[2]));
             } catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "[LEVEL]经验必须为一个大于0的整数!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f经验必须为一个大于0的整数!");
                 return true;
             }
-            sender.sendMessage(ChatColor.AQUA + "[LEVEL]为玩家" + args[1] + "增加了经验:" + args[2]);
+            sender.sendMessage(ChatColor.AQUA + "§a 时光等级 §b§l>> §f为玩家" + args[1] + "增加了经验:" + args[2]);
             return true;
         }
 
@@ -80,7 +80,7 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length==1&&sender.isOp()){
             Player player = Bukkit.getPlayer(args[0]);
             if (player==null){
-                sender.sendMessage(ChatColor.RED + "[LEVEL]玩家不存在或者不在线!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f玩家不存在或者不在线!");
                 return true;
             }
             List<String> messages = plugin.getConfig().getStringList("setting.message");

@@ -33,11 +33,11 @@ public class ResListener implements Listener {
         int maxResCount = plugin.getPlayerMaxResCount(player.getUniqueId());
         int maxResSize = plugin.getPlayerMaxResSize(player.getUniqueId());
         if ((count >= maxResCount) && (!player.isOp())) {
-            player.sendMessage(ChatColor.DARK_RED + "[LEVEL]" + ChatColor.AQUA + "你的领地数量已经达到上限,请先升级你的爵位再购买领地!");
+            player.sendMessage(ChatColor.DARK_RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "你的领地数量已经达到上限,请先升级你的爵位再购买领地!");
             event.setCancelled(true);
         }
         if (((xSize > maxResSize) || (zSize > maxResSize)) && (!player.isOp())) {
-            player.sendMessage(ChatColor.DARK_RED + "[LEVEL]" + ChatColor.AQUA + "你圈的领地太大了,请先升级你的爵位再购买领地,或者缩小领地长度!");
+            player.sendMessage(ChatColor.DARK_RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "你圈的领地太大了,请先升级你的爵位再购买领地,或者缩小领地长度!");
             event.setCancelled(true);
         }
     }
@@ -51,7 +51,7 @@ public class ResListener implements Listener {
         int count = ResidenceApi.getPlayerManager().getResidencePlayer(event.getNewOwner()).getResAmount();
         int maxResCount = plugin.getPlayerMaxResCount(player.getUniqueId());
         if (count >= maxResCount && !player.isOp()) {
-            player.sendMessage(ChatColor.DARK_RED + "[LEVEL]" + ChatColor.AQUA + "你的领地数量已经达到上限,请先升级你的爵位再接收领地!");
+            player.sendMessage(ChatColor.DARK_RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "你的领地数量已经达到上限,请先升级你的爵位再接收领地!");
             event.getResidence().remove();
             return;
         }

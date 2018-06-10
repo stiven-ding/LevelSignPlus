@@ -37,11 +37,11 @@ public class PlayerListener implements Listener {
                 Sign sign = (Sign) block.getState();
                 for (int i = 0; i < 4; i++) {
                     String line = sign.getLine(i);
-                    if (line.contains("[LEVEL]")) {
+                    if (line.contains("§a 时光等级 §b§l>> §f")) {
                         //扣钱的功能代添加
                         boolean success = plugin.withDraw(player);
                         if (success) {
-                            player.sendMessage(ChatColor.GREEN + "[LEVEL]" + ChatColor.GRAY
+                            player.sendMessage(ChatColor.GREEN + "§a 时光等级 §b§l>> §f" + ChatColor.GRAY
                                     + "你成功购买了" + plugin.buyCount + "点数,花费" + plugin.price * plugin.buyCount + "游戏币");
                         } else {
                             player.sendMessage(ChatColor.RED + "购买失败,或许你的游戏币不够用了,快去赚钱吧!");
@@ -50,10 +50,10 @@ public class PlayerListener implements Listener {
                         int levelUp = plugin.addPlayerPoint(player.getUniqueId());
                         switch (levelUp) {
                             case SignExtend.LEVEL_UP:
-                                player.sendMessage(ChatColor.GREEN + "[LEVEL]" + ChatColor.GRAY + "你的爵位升级成功,继续努力哦!");
+                                player.sendMessage(ChatColor.GREEN + "§a 时光等级 §b§l>> §f" + ChatColor.GRAY + "你的爵位升级成功,继续努力哦!");
                                 if (plugin.broadCast) {
                                     plugin.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&',
-                                            "&a[LEVEL]&7恭喜&b" + player.getName() + "&7的爵位升级到" + plugin.getPlayerLevelNick(player.getUniqueId()) + "&7!"));
+                                            "&a§a 时光等级 §b§l>> §f&7恭喜&b" + player.getName() + "&7的爵位升级到" + plugin.getPlayerLevelNick(player.getUniqueId()) + "&7!"));
                                 }
                                 break;
                             case SignExtend.REACH_MAX:
