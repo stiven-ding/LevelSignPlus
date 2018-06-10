@@ -5,6 +5,7 @@ author: shell
 website: http://licrafter.com
 description: prefix level
 depend: [ProtocolLib,Residence,Vault]
+softdepend: [PlaceholderAPI]
 commands:
   level:
     description: basic command
