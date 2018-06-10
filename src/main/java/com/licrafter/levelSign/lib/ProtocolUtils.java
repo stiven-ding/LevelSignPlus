@@ -1,11 +1,11 @@
 package com.licrafter.levelSign.lib;
 
+import java.util.List;
+
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.BlockPosition;
 import com.comphenix.protocol.wrappers.nbt.NbtCompound;
-
-import java.util.List;
 
 public class ProtocolUtils {
 	private ProtocolUtils() {
