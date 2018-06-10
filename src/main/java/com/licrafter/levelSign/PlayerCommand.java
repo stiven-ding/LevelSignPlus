@@ -106,11 +106,15 @@ public class PlayerCommand implements CommandExecutor {
 
     public String replace(Player player, String msg) {
         UUID uuid = player.getUniqueId();
-        msg = msg.replaceAll("%player%", player.getName()).replaceAll("%level%", plugin.getPlayerLevelNick(uuid))
-                .replaceAll("%point%", plugin.getPlayerPoint(uuid)).replaceAll("%maxPoint%", String.valueOf(plugin.getPlayerMaxPoint(uuid)))
-                .replaceAll("%maxHealth%", String.valueOf(plugin.getPlayerMaxHealth(uuid))).replaceAll("%resCount%", String.valueOf(plugin.getPlayerMaxResCount(uuid)))
-                .replaceAll("%resSize%", String.valueOf(plugin.getPlayerMaxResSize(uuid))).replaceAll("%killMob%", String.valueOf(plugin.getKillMob(player.getName())))
-                .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())));
+        msg = msg.replaceAll("%player%", player.getName())
+                 .replaceAll("%level%", plugin.getPlayerLevelNick(uuid))
+                 .replaceAll("%point%", plugin.getPlayerPoint(uuid))
+                 .replaceAll("%maxPoint%", String.valueOf(plugin.getPlayerMaxPoint(uuid)))
+                 .replaceAll("%maxHealth%", String.valueOf(plugin.getPlayerMaxHealth(uuid)))
+                 .replaceAll("%resCount%", String.valueOf(plugin.getPlayerMaxResCount(uuid)))
+                 .replaceAll("%resSize%", String.valueOf(plugin.getPlayerMaxResSize(uuid)))
+                 .replaceAll("%killMob%", String.valueOf(plugin.getKillMob(player.getName())))
+                 .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())))
         return msg;
     }
 

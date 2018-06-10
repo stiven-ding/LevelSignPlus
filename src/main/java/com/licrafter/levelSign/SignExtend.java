@@ -328,6 +328,10 @@ public class SignExtend extends JavaPlugin {
         return getConfig().getInt("setting.levels." + level + ".maxPoint");
     }
 
+    public String getRemainingPoint(UUID uuid) {
+        return String.valueOf(getPlayerMaxPoint(uuid)-Integer.parseInt(getPlayerPoint(uuid)));
+    }
+
     public void reload() {
         reloadConfig();
         levelConfiguration.reloadDataConfig();
@@ -406,4 +410,5 @@ public class SignExtend extends JavaPlugin {
     public int getKillAmountByPlayer(String player) {
         return mobConfig.getInt("mobs." + player, 0);
     }
+
 }
