@@ -138,7 +138,6 @@ public class PlayerListener implements Listener {
         event.setFormat("[" + pformat + ChatColor.WHITE + "]" + format);
         event.setFormat(event.getFormat());
     }
-
     public void setMaxHealth(Player player) {
         if (!plugin.isEnableHealth()) {
             return;
