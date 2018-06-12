@@ -26,9 +26,9 @@ public class PlayerCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (args.length == 1 && args[0].equals("reload") && sender.isOp()) {
-            sender.sendMessage(ChatColor.RED + "��a ʱ��ȼ� ��b��l>> ��f" + ChatColor.AQUA + "reloading config....");
+            sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "reloading config....");
             plugin.reload();
-            sender.sendMessage(ChatColor.RED + "��a ʱ��ȼ� ��b��l>> ��f" + ChatColor.AQUA + "config reloaded!");
+            sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f" + ChatColor.AQUA + "config reloaded!");
             return true;
         }
         if (args.length == 1 && args[0].equals("list")) {
@@ -54,16 +54,16 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length == 3 && args[0].equals("add") && sender.isOp()) {
             Player player = Bukkit.getPlayer(args[1]);
             if (player == null) {
-                sender.sendMessage(ChatColor.RED + "��a ʱ��ȼ� ��b��l>> ��f��Ҳ����ڻ��߲�����!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f玩家不存在或者不在线!");
                 return true;
             }
             try {
                 plugin.setPlayerPoint(player.getUniqueId(), Integer.parseInt(args[2]));
             } catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "��a ʱ��ȼ� ��b��l>> ��f�������Ϊһ������0������!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f经验必须为一个大于0的整数!");
                 return true;
             }
-            sender.sendMessage(ChatColor.AQUA + "��a ʱ��ȼ� ��b��l>> ��fΪ���" + args[1] + "�����˾���:" + args[2]);
+            sender.sendMessage(ChatColor.AQUA + "§a 时光等级 §b§l>> §f为玩家" + args[1] + "增加了经验:" + args[2]);
             return true;
         }
 
@@ -80,7 +80,7 @@ public class PlayerCommand implements CommandExecutor {
         if (args.length==1&&sender.isOp()){
             Player player = Bukkit.getPlayer(args[0]);
             if (player==null){
-                sender.sendMessage(ChatColor.RED + "��a ʱ��ȼ� ��b��l>> ��f��Ҳ����ڻ��߲�����!");
+                sender.sendMessage(ChatColor.RED + "§a 时光等级 §b§l>> §f玩家不存在或者不在线!");
                 return true;
             }
             List<String> messages = plugin.getConfig().getStringList("setting.message");
@@ -92,29 +92,25 @@ public class PlayerCommand implements CommandExecutor {
         }
 
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("setting.title")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level list  &7- �鿴�ȼ�˳��"));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level me  &7- �鿴�Լ��ĵȼ���Ϣ"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level list  &7- 查看等级顺序"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level me  &7- 查看自己的等级信息"));
         if (sender.isOp()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level add [player] [����]  &7- Ϊ������Ӿ������(����Ϊ������)"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level add [player] [点数]  &7- 为玩家增加经验点数(必须为正整数)"));
         }
         if (sender.isOp()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level [player]  &7- �鿴ĳ����ҵĵȼ���Ϣ"));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level [player]  &7- 查看某个玩家的等级信息"));
         }
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level reload  &7-  ���������ļ�"));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&b/level reload  &7-  重载配置文件"));
         return true;
     }
 
     public String replace(Player player, String msg) {
         UUID uuid = player.getUniqueId();
-        msg = msg.replaceAll("%player%", player.getName())
-                 .replaceAll("%level%", plugin.getPlayerLevelNick(uuid))
-                 .replaceAll("%point%", plugin.getPlayerPoint(uuid))
-                 .replaceAll("%maxPoint%", String.valueOf(plugin.getPlayerMaxPoint(uuid)))
-                 .replaceAll("%maxHealth%", String.valueOf(plugin.getPlayerMaxHealth(uuid)))
-                 .replaceAll("%resCount%", String.valueOf(plugin.getPlayerMaxResCount(uuid)))
-                 .replaceAll("%resSize%", String.valueOf(plugin.getPlayerMaxResSize(uuid)))
-                 .replaceAll("%killMob%", String.valueOf(plugin.getKillMob(player.getName())))
-                 .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())));
+        msg = msg.replaceAll("%player%", player.getName()).replaceAll("%level%", plugin.getPlayerLevelNick(uuid))
+                .replaceAll("%point%", plugin.getPlayerPoint(uuid)).replaceAll("%maxPoint%", String.valueOf(plugin.getPlayerMaxPoint(uuid)))
+                .replaceAll("%maxHealth%", String.valueOf(plugin.getPlayerMaxHealth(uuid))).replaceAll("%resCount%", String.valueOf(plugin.getPlayerMaxResCount(uuid)))
+                .replaceAll("%resSize%", String.valueOf(plugin.getPlayerMaxResSize(uuid))).replaceAll("%killMob%", String.valueOf(plugin.getKillMob(player.getName())))
+                .replaceAll("%attack%", String.valueOf(plugin.getAttackPlus(player.getUniqueId())));
         return msg;
     }
 

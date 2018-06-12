@@ -33,11 +33,11 @@ public class ResListener implements Listener {
         int maxResCount = plugin.getPlayerMaxResCount(player.getUniqueId());
         int maxResSize = plugin.getPlayerMaxResSize(player.getUniqueId());
         if ((count >= maxResCount) && (!player.isOp())) {
-            player.sendMessage(ChatColor.DARK_RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf" + ChatColor.AQUA + "ÄãµÄÁìµØÊıÁ¿ÒÑ¾­´ïµ½ÉÏÏŞ,ÇëÏÈÉı¼¶ÄãµÄ¾ôÎ»ÔÙ¹ºÂòÁìµØ!");
+            player.sendMessage(ChatColor.DARK_RED + "Â§a æ—¶å…‰ç­‰çº§ Â§bÂ§l>> Â§f" + ChatColor.AQUA + "ä½ çš„é¢†åœ°æ•°é‡å·²ç»è¾¾åˆ°ä¸Šé™,è¯·å…ˆå‡çº§ä½ çš„çˆµä½å†è´­ä¹°é¢†åœ°!");
             event.setCancelled(true);
         }
         if (((xSize > maxResSize) || (zSize > maxResSize)) && (!player.isOp())) {
-            player.sendMessage(ChatColor.DARK_RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf" + ChatColor.AQUA + "ÄãÈ¦µÄÁìµØÌ«´óÁË,ÇëÏÈÉı¼¶ÄãµÄ¾ôÎ»ÔÙ¹ºÂòÁìµØ,»òÕßËõĞ¡ÁìµØ³¤¶È!");
+            player.sendMessage(ChatColor.DARK_RED + "Â§a æ—¶å…‰ç­‰çº§ Â§bÂ§l>> Â§f" + ChatColor.AQUA + "ä½ åœˆçš„é¢†åœ°å¤ªå¤§äº†,è¯·å…ˆå‡çº§ä½ çš„çˆµä½å†è´­ä¹°é¢†åœ°,æˆ–è€…ç¼©å°é¢†åœ°é•¿åº¦!");
             event.setCancelled(true);
         }
     }
@@ -51,7 +51,7 @@ public class ResListener implements Listener {
         int count = ResidenceApi.getPlayerManager().getResidencePlayer(event.getNewOwner()).getResAmount();
         int maxResCount = plugin.getPlayerMaxResCount(player.getUniqueId());
         if (count >= maxResCount && !player.isOp()) {
-            player.sendMessage(ChatColor.DARK_RED + "¡ìa Ê±¹âµÈ¼¶ ¡ìb¡ìl>> ¡ìf" + ChatColor.AQUA + "ÄãµÄÁìµØÊıÁ¿ÒÑ¾­´ïµ½ÉÏÏŞ,ÇëÏÈÉı¼¶ÄãµÄ¾ôÎ»ÔÙ½ÓÊÕÁìµØ!");
+            player.sendMessage(ChatColor.DARK_RED + "Â§a æ—¶å…‰ç­‰çº§ Â§bÂ§l>> Â§f" + ChatColor.AQUA + "ä½ çš„é¢†åœ°æ•°é‡å·²ç»è¾¾åˆ°ä¸Šé™,è¯·å…ˆå‡çº§ä½ çš„çˆµä½å†æ¥æ”¶é¢†åœ°!");
             event.getResidence().remove();
             return;
         }

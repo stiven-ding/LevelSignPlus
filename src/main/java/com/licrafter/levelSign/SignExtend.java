@@ -44,7 +44,7 @@ public class SignExtend extends JavaPlugin {
     public boolean hasTagApi;
     public String maxLevel;
     public int maxLevelPoint;
-    // ����
+    // 单价
     public double price;
     // 点击一次购买数量
     public int buyCount;
@@ -53,7 +53,7 @@ public class SignExtend extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Enabling SignExtend (�汾:" + getDescription().getVersion() + " " + "����:" +
+        getLogger().info("Enabling SignExtend (版本:" + getDescription().getVersion() + " " + "作者:" +
                 getDescription().getAuthors().get(0) + " )" + " WebSite:" + getDescription().getWebsite());
         if (setupEconomy()) {
             getLogger().info("Plugin Vault Is Found! " + econ.getName());
@@ -117,7 +117,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&l�ȼ�:" + "&a&l" + getPlayerLevelNick(player.getUniqueId())));
+                        "&l等级:" + "&a&l" + getPlayerLevelNick(player.getUniqueId())));
             }
 
         };
@@ -125,7 +125,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&l����:" + "&a&l" + getPlayerPoint(player.getUniqueId())));
+                        "&l点数:" + "&a&l" + getPlayerPoint(player.getUniqueId())));
             }
         };
 
@@ -133,7 +133,7 @@ public class SignExtend extends JavaPlugin {
             @Override
             public String getValue(Player player, Location location, String originalLine) {
                 return centerText(ChatColor.translateAlternateColorCodes('&',
-                        "&l����:" + "&a&l" + getPlayerMaxPoint(player.getUniqueId())));
+                        "&l上限:" + "&a&l" + getPlayerMaxPoint(player.getUniqueId())));
             }
         };
 
@@ -141,40 +141,40 @@ public class SignExtend extends JavaPlugin {
 
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.one", "����"));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.one", "暂无"));
             }
         };
         new Holder(this, "[TWO]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.two", "����"));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.two", "暂无"));
             }
         };
         new Holder(this, "[THREE]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.three", "����"));
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getString("rank.three", "暂无"));
             }
         };
 
         new Holder(this, "[COUNT1]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.one") + "ֻ");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.one") + "只");
             }
         };
 
         new Holder(this, "[COUNT2]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.two") + "ֻ");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.two") + "只");
             }
         };
 
         new Holder(this, "[COUNT3]", "sign.create") {
             @Override
             public String getValue(Player var1, Location var2, String var3) {
-                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.three") + "ֻ");
+                return ChatColor.translateAlternateColorCodes('&', "&a&l" + mobConfig.getInt("count.three") + "只");
             }
         };
     }
@@ -184,7 +184,7 @@ public class SignExtend extends JavaPlugin {
         return sb.append("               ").toString();
     }
 
-    // �������ӵ���
+    // 给玩家添加点数
     public int addPlayerPoint(UUID uuid) {
         int newPoint = getPlayerPoint2(uuid) + buyCount;
         if (newPoint > maxLevelPoint) {
@@ -195,7 +195,7 @@ public class SignExtend extends JavaPlugin {
         return canLevelUp(uuid, newPoint);
     }
 
-    // ָ��������ӵ���
+    // 指令给玩家添加点数
     public void setPlayerPoint(UUID uuid, int point) {
         if (point < 0) {
             return;
@@ -208,7 +208,7 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // �ж��Ƿ�ﵽ������,Ȼ������
+    // 判断是否达到最大点数,然后升级
     public int canLevelUp(UUID uuid, int point) {
         if (point > getPlayerMaxPoint(uuid)) {
             levelUp(uuid);
@@ -237,7 +237,7 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // ����
+    // 升级
     public void levelUp(UUID uuid) {
         String level = getPlayerLevel(uuid);
         int level_num = Integer.valueOf(level.replace("level_", "")) + 1;
@@ -254,7 +254,7 @@ public class SignExtend extends JavaPlugin {
         levelConfig.set(uuid.toString().concat(".level"), level);
     }
 
-    // ����uuid�õ�����ҵ�point
+    // 根据uuid得到该玩家的point
     public String getPlayerPoint(UUID uuid) {
         if (levelConfig.contains(uuid.toString())) {
             return String.valueOf(levelConfig.getInt(uuid.toString() + ".point"));
@@ -267,7 +267,7 @@ public class SignExtend extends JavaPlugin {
         return levelConfig.getInt(uuid.toString() + ".point");
     }
 
-    // �õ���ҵȼ�ǰ׺,���û�и�����򷵻�Ĭ�ϵȼ�ǰ׺
+    // 得到玩家等级前缀,如果没有该玩家则返回默认等级前缀
     public String getPlayerLevelNick(UUID uuid) {
         return getLevelNick(getPlayerLevel(uuid));
     }
@@ -276,27 +276,27 @@ public class SignExtend extends JavaPlugin {
         return getConfig().getString("setting.levels." + level + ".nick");
     }
 
-    // �õ�������Ѫ��
+    // 得到玩家最大血量
     public Double getPlayerMaxHealth(UUID uuid) {
         return getConfig().getDouble("setting.levels." + getPlayerLevel(uuid) + ".health");
     }
 
-    // �õ��������ӵ�е�����������
+    // 得到玩家所能拥有的最多领地数量
     public int getPlayerMaxResCount(UUID uuid) {
         return getConfig().getInt("setting.levels." + getPlayerLevel(uuid) + ".resCount");
     }
 
-    // �õ���������س���
+    // 得到玩家最大领地长度
     public int getPlayerMaxResSize(UUID uuid) {
         return getConfig().getInt("setting.levels." + getPlayerLevel(uuid) + ".resSize");
     }
 
-    // �������Ѫ�����޵Ĺ����Ƿ���
+    // 增加最大血量上限的功能是否开启
     public boolean isEnableHealth() {
         return getConfig().getBoolean("setting.enable_health", true);
     }
 
-    // ������ش�С�������Ĺ����Ƿ���
+    // 限制领地大小和数量的功能是否开启
     public boolean isEnableRes() {
         return getConfig().getBoolean("setting.enable_res", true);
     }
@@ -309,7 +309,7 @@ public class SignExtend extends JavaPlugin {
         player.setHealth(maxHealth);
     }
 
-    // �õ���ҵ�level�ȼ�,���û���򷵻�Ĭ�ϵȼ�
+    // 得到玩家的level等级,如果没有则返回默认等级
     public String getPlayerLevel(UUID uuid) {
         if (levelConfig.contains(uuid.toString() + ".level")) {
             return levelConfig.getString(uuid.toString() + ".level");
@@ -318,12 +318,12 @@ public class SignExtend extends JavaPlugin {
         }
     }
 
-    // �õ������Ҫ�ﵽ����������point
+    // 得到玩家需要达到的升级上限point
     public int getPlayerMaxPoint(UUID uuid) {
         return getMaxPoint(getPlayerLevel(uuid));
     }
 
-    // ĳ���ȼ���Ҫ�ﵽ�������������
+    // 某个等级需要达到的最大升级上限
     public int getMaxPoint(String level) {
         return getConfig().getInt("setting.levels." + level + ".maxPoint");
     }
@@ -405,9 +405,5 @@ public class SignExtend extends JavaPlugin {
 
     public int getKillAmountByPlayer(String player) {
         return mobConfig.getInt("mobs." + player, 0);
-    }
-
-    public Double getProgress(UUID uuid) {
-        return getConfig().getDouble("setting.levels." + getPlayerLevel(uuid) + ".attack");
     }
 }

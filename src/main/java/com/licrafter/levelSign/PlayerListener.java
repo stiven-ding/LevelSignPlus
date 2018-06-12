@@ -128,7 +128,7 @@ public class PlayerListener implements Listener {
     public void onPlayerChangeWorld(PlayerChangedWorldEvent event) {
         setMaxHealth(event.getPlayer());
     }
-
+/*
     @EventHandler(priority = EventPriority.LOW)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player p = event.getPlayer();
@@ -138,6 +138,7 @@ public class PlayerListener implements Listener {
         event.setFormat("[" + pformat + ChatColor.WHITE + "]" + format);
         event.setFormat(event.getFormat());
     }
+    */
     public void setMaxHealth(Player player) {
         if (!plugin.isEnableHealth()) {
             return;
