@@ -1,0 +1,225 @@
+#攻击力加成不回累加,是在玩家基础攻击力上增加
+setting:
+  #指令菜单title
+  title: '&e=========&bXXX服务器声望系统&e==========='
+  #每个point的加个
+  price: 10.0
+  #单击一次购买多少点数
+  buy: 100
+  #当升级的时候是否全服广播
+  broadCast: true
+  #是否开启最高血量功能的升级
+  enable_health: true
+  #是否开启领地大小和数量的升级
+  enable_res: true
+  #查看自己的等级信息时候显示的文字
+  #可用的变量有:%player%,%level%,%point%,%maxPoint%,%resCount%,%resSize%,'%maxHealth%,%killMob%,%attack%'
+  message:
+  - '&e---------------------------------'
+  - '&e玩家: &b&l%player%'
+  - '&e爵位: &l%level%'
+  - '&e---------------------------------'
+  - '&e当前点数: &b%point% 点'
+  - '&e升级所需: &b%maxPoint% 点'
+  - '&e领地上限: &b%resCount% 个'
+  - '&e领地最大: &b%resSize% 格'
+  - '&e最大血量: &b%maxHealth% 点'
+  - '&e击杀怪物: &b%killMob% 只'
+  - '&e攻击加成: &b%attack% 点'
+  - '&e---------------------------------'
+  #等级列表
+  levels:
+    level_0:
+      #称号
+      nick: '&a流浪者'
+      #最大血量
+      health: 10
+      #领地大小(格为单位)
+      resSize: 10
+      #领地数量
+      resCount: 1
+      #升级上限点数
+      maxPoint: 500
+      #攻击力增加1点
+      attack: 1.0
+    level_1:
+      #称号
+      nick: '&a农夫'
+      #最大血量
+      health: 12
+      #领地大小(格为单位)
+      resSize: 20
+      #领地数量
+      resCount: 1
+      #升级上限点数
+      maxPoint: 1500
+      #攻击力增加1点
+      attack: 1.0
+      permissions:
+      #%player%表示升级的玩家
+      cmds:
+    level_2:
+      #称号
+      nick: '&a伐木工'
+      #最大血量
+      health: 14
+      #领地大小(格为单位)
+      resSize: 40
+      #领地数量
+      resCount: 2
+      #升级上限点数
+      maxPoint: 3000
+      #攻击力增加1点
+      attack: 1.0
+      permissions:
+      cmds:
+    level_3:
+      #称号
+      nick: '&b采石匠'
+      #最大血量
+      health: 16
+      #领地大小(格为单位)
+      resSize: 60
+      #领地数量
+      resCount: 2
+      #升级上限点数
+      maxPoint: 6000
+      #攻击力增加2点
+      attack: 2.0
+      permissions:
+      cmds:
+    level_4:
+      #称号
+      nick: '&b猎手'
+      #最大血量
+      health: 20
+      #领地大小(格为单位)
+      resSize: 80
+      #领地数量
+      resCount: 3
+      #升级上限点数
+      maxPoint: 8000
+      #攻击力增加2点
+      attack: 2.0
+      permissions:
+      cmds:
+    level_5:
+      #称号
+      nick: '&e手艺人'
+      #最大血量
+      health: 22
+      #领地大小(格为单位)
+      resSize: 100
+      #领地数量
+      resCount: 3
+      #升级上限点数
+      maxPoint: 10000
+      #攻击力增加2点
+      attack: 2.0
+      permissions:
+      cmds:
+    level_6:
+      #称号
+      nick: '&e考古家'
+      #最大血量
+      health: 24
+      #领地大小(格为单位)
+      resSize: 100
+      #领地数量
+      resCount: 4
+      #升级上限点数
+      maxPoint: 15000
+      #攻击力增加2点
+      attack: 2.0
+      permissions:
+      cmds:
+    level_7:
+      #称号
+      nick: '&7发明家'
+      #最大血量
+      health: 26
+      #领地大小(格为单位)
+      resSize: 150
+      #领地数量
+      resCount: 5
+      #升级上限点数
+      maxPoint: 20000
+      #攻击力增加2点
+      attack: 2.0
+      permissions:
+      cmds:
+    level_8:
+      #称号
+      nick: '&7牧场主'
+      #最大血量
+      health: 28
+      #领地大小(格为单位)
+      resSize: 200
+      #领地数量
+      resCount: 5
+      #升级上限点数
+      maxPoint: 30000
+      #攻击力增加3点
+      attack: 3.0
+      permissions:
+      cmds:
+    level_9:
+      #称号
+      nick: '&5附魔师'
+      #最大血量
+      health: 30
+      #领地大小(格为单位)
+      resSize: 300
+      #领地数量
+      resCount: 6
+      #升级上限点数
+      maxPoint: 40000
+      #攻击力增加3点
+      attack: 3.0
+      permissions:
+      cmds:
+    level_10:
+      #称号
+      nick: '&5领主'
+      #最大血量
+      health: 32
+      #领地大小(格为单位)
+      resSize: 400
+      #领地数量
+      resCount: 6
+      #升级上限点数
+      maxPoint: 60000
+      #攻击力增加3点
+      attack: 3.0
+      permissions:
+      cmds:
+    level_11:
+      #称号
+      nick: '&5屠龙者'
+      #最大血量
+      health: 34
+      #领地大小(格为单位)
+      resSize: 500
+      #领地数量
+      resCount: 7
+      #升级上限点数
+      maxPoint: 80000
+      #攻击力增加4点
+      attack: 4.0
+      permissions:
+      cmds:
+    level_12:
+      #称号
+      nick: '&7艺&0术&5家'
+      #最大血量
+      health: 40
+      #领地大小(格为单位)
+      resSize: 800
+      #领地数量
+      resCount: 8
+      #升级上限点数
+      maxPoint: 100000
+      #攻击力增加4点
+      attack: 4.0
+      permissions:
+      cmds:
