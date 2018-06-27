@@ -324,6 +324,11 @@ public class SignExtend extends JavaPlugin {
         return getConfig().getInt("setting.levels." + level + ".maxPoint");
     }
 
+    // 得到玩家需要的剩余point
+    public int getPlayerRemainingPoint(UUID uuid) {
+        return getPlayerMaxPoint(uuid)-getPlayerPoint2(uuid);
+    }
+
     public void reload() {
         reloadConfig();
         levelConfiguration.reloadDataConfig();
@@ -402,4 +407,14 @@ public class SignExtend extends JavaPlugin {
     public int getKillAmountByPlayer(String player) {
         return mobConfig.getInt("mobs." + player, 0);
     }
+
+    //得到玩家等级描述
+    public String getPlayerLevelDesc(UUID uuid) {
+        return getLevelDesc(getPlayerLevel(uuid));
+    }
+
+    public String getLevelDesc(String level) {
+        return getConfig().getString("setting.levels." + level + ".desc");
+    }
+
 }
