@@ -23,8 +23,7 @@ public class LevelUpExecutor {
         cmds = plugin.getConfig().getStringList(new StringBuilder("setting.levels.").append(levelTo).append(".cmds").toString());
         String player = Bukkit.getPlayer(uuid).getName();
         for (String cmd : cmds) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replaceAll("%player%", player));
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replaceAll("%level%", plugin.getPlayerLevelNick(uuid)));
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmd.replaceAll("%player%", player).replaceAll("%level%", plugin.getPlayerLevelNick(uuid)));
         }
 
         for (String perm : permissions) {
